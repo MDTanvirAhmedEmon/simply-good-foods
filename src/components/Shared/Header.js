@@ -10,12 +10,12 @@ import { HiMiniPower } from "react-icons/hi2";
 const Header = () => {
     const [menu, setMenu] = useState(false);
     return (
-        <div>
+        <div className="">
             <div className=" h-16 bg-[#FDB64E] flex items-center justify-center">
                 <h3 className=" text-white text-md md:text-xl font-semibold ">%% Free shipping on all orders %%</h3>
             </div>
-            <div className=" shadow-lg">
-                <div className=" container mx-auto flex items-center justify-between py-4">
+            <div className=" bg-white shadow-lg z-50 sticky ">
+                <div className=" container mx-auto flex items-center justify-between py-4 ">
                     <div>
                         <Image className=" hidden lg:block" src={logo} height={80} width={80} alt="logo"></Image>
                     </div>
