@@ -1,3 +1,4 @@
+"use client"
 import bg from "../../../public/herobg.jpg";
 import { Button } from "../ui/button";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -12,6 +13,7 @@ import item1 from "../../../public/item1.png";
 import item2 from "../../../public/item2.png";
 import item3 from "../../../public/item3.png";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 
 const Hero = () => {
   const bgImage = {
@@ -46,7 +48,7 @@ const Hero = () => {
           </div>
           {/* image carousel */}
           <div className=" mx-8 md:mx-0 w-auto md:w-[350px] lg:w-[400px] xl:w-[500px]">
-            <Carousel>
+            <Carousel plugins={[Autoplay({delay: 2000, number: 60} ),]}>
               <CarouselContent>
                 {
                     // eslint-disable-next-line react/jsx-key
