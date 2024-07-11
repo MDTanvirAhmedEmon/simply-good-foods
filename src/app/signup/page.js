@@ -25,7 +25,7 @@ const SignUp = () => {
 
           <form
             onSubmit={handleSubmit(formSubmit)}
-            className="w-[500px] py-10 px-8 bg-[#ffffffd2] rounded-xl "
+            className="w-[500px] py-10 px-8 bg-[#ffffffe7] rounded-xl "
           >
             <div>
                 <h2 className="text-center text-2xl font-semibold mb-2 text-slate-600">Sign up</h2>
@@ -34,7 +34,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="name">User Name:</label>
               <Input
-                className="border p-3  mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3  mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="text"
                 {...register("name", { required: true })}
                 id=""
@@ -45,7 +45,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="email">Email:</label>
               <Input
-                className="border p-3 mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3 mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="email"
                 {...register("email", { required: true })}
                 id=""
@@ -56,7 +56,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="number">Contact No:</label>
               <Input
-                className="border p-3 mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3 mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="number"
                 {...register("number", { required: true })}
                 id=""
@@ -67,7 +67,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="address">Permanent Address:</label>
               <Input
-                className="border p-3 mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3 mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="text"
                 {...register("address", { required: true })}
                 id=""
@@ -78,7 +78,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="password">Password:</label>
               <Input
-                className="border p-3 mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3 mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="password"
                 {...register("password", { required: true })}
                 id=""
@@ -89,7 +89,7 @@ const SignUp = () => {
             <div className="flex flex-col mt-2 md:mt-5 ">
               <label className="text-slate-600 font-semibold" htmlFor="confirmPassword">Confirm Password:</label>
               <Input
-                className="border p-3 mt-2 bg-slate-50 text-md rounded-xl h-12"
+                className="border p-3 mt-2 bg-slate-50 text-md rounded-full h-12"
                 type="password"
                 {...register("confirmPassword", { required: true })}
                 id=""
@@ -104,7 +104,7 @@ const SignUp = () => {
             />
             <p className="text-md mt-5">
               Already have an account?
-              <Link className="text-primaryColor " href={`/login`}>
+              <Link className="text-[#FDB64E] font-bold" href={`/login`}>
                 {" "}
                 Log In
               </Link>
