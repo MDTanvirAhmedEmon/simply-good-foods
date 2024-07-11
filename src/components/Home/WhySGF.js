@@ -2,12 +2,13 @@ import Image from "next/image";
 import health from "../../../public/health.png";
 import protein from "../../../public/protein.png";
 import variety from "../../../public/variety.png";
+import SectionTitle from "./utils/SectionTitle";
 
 const WhySGF = () => {
   return (
     <div className="bg-[#FDFDFD] py-20">
       <div className="container mx-auto">
-        <h1 className="text-slate-600 text-4xl md:text-5xl font-bold text-center">Why Simply Good Food</h1>
+        <SectionTitle>Why Simply Good Food</SectionTitle>
         <div className="flex flex-col md:flex-row gap-8 text-center mt-14">
           <div>
             <Image className="mx-auto" src={health} height={150} width={150} alt="img" />

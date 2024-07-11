@@ -1,4 +1,7 @@
+import DailyMeals from '@/components/Home/DailyMeals';
+import FAQ from '@/components/Home/FAQ';
 import Hero from '@/components/Home/Hero';
+import Menu from '@/components/Home/Menu';
 import WhySGF from '@/components/Home/WhySGF';
 import React from 'react';
 
@@ -8,6 +11,9 @@ const HomePage = () => {
             
             <Hero></Hero>
             <WhySGF></WhySGF>
+            <Menu></Menu>
+            <DailyMeals></DailyMeals>
+            <FAQ></FAQ>
         </div>
     );
 };

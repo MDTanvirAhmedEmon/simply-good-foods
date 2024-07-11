@@ -1,13 +1,55 @@
-import React from 'react';
+import React from "react";
+import SectionTitle from "./utils/SectionTitle";
+import ProductCart from "./utils/ProductCart";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-const Menu = () => {
-    return (
-        <div>
-            <div>
-                
-            </div>
+const Menu = async () => {
+  const res = await fetch(`http://localhost:5000/products`);
+  const data = await res.json();
+  console.log(data.data);
+  return (
+    <div className="py-20">
+      <div className="container mx-auto">
+        <SectionTitle>New & Trending menu</SectionTitle>
+        {/* <div className=" flex gap-4 mt-16">
+          {data?.data?.map((product) => (
+            <ProductCart key={product._id} product={product}></ProductCart>
+          ))}
+        </div> */}
+
+        <div className="mx-4 md:mx-8">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full  mt-16"
+          >
+            <CarouselContent>
+              {data.data.map((product) => (
+                <CarouselItem
+                  key={product._id}
+                  className="md:basis-1/2 lg:basis-1/3 "
+                >
+                  <ProductCart
+                    key={product._id}
+                    product={product}
+                  ></ProductCart>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Menu;
