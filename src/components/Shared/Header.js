@@ -20,7 +20,7 @@ const Header = () => {
                         <Image className=" hidden lg:block" src={logo} height={80} width={80} alt="logo"></Image>
                     </div>
                     <nav className="hidden lg:block">
-                        <ul className=" flex gap-4 text-xl font-semibold text-slate-500 items-center">
+                        <ul className=" flex gap-4 lg:text-md xl:text-xl font-semibold text-slate-500 items-center">
                             <li><Link href={'/'}>Home</Link></li><span className=" text-slate-300">|</span>
                             <li><Link href={'/'}>Our menus</Link></li><span className=" text-slate-300">|</span>
                             <li><Link href={'/'}>Meal plans</Link></li><span className=" text-slate-300">|</span>
@@ -30,9 +30,15 @@ const Header = () => {
                             <li><Link href={'/'}>FAQ</Link></li>
                         </ul>
                     </nav>
-                    <div className="hidden lg:block">
+                    {/* button for large device */}
+                    <div className="hidden xl:block">
                         <Button  variant="outline" size="lg" className="rounded-xl mr-4 px-8"><Link href={'/login'}>Log In</Link></Button>
                         <Button  size="lg" className=" rounded-xl text-lg"><Link href={'/signup'}>Sign Up</Link></Button>
+                    </div>
+                    {/* button for medium device */}
+                    <div className="hidden lg:block xl:hidden">
+                        <Button  variant="outline" size="default" className="rounded-xl mr-4 px-8"><Link href={'/login'}>Log In</Link></Button>
+                        <Button  size="default" className=" rounded-xl text-lg"><Link href={'/signup'}>Sign Up</Link></Button>
                     </div>
                     {/*========= mobile nav =========*/}
                     <div className=" flex justify-between w-full items-center lg:hidden">
