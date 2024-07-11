@@ -47,7 +47,7 @@ const Hero = () => {
             </Button>
           </div>
           {/* image carousel */}
-          <div className=" mx-8 md:mx-0 w-auto md:w-[350px] lg:w-[400px] xl:w-[500px]">
+          <div className=" mx-8 xl:mx-0 w-auto md:w-[350px] lg:w-[400px] xl:w-[500px]">
             <Carousel plugins={[Autoplay({delay: 2000, number: 60} ),]}>
               <CarouselContent>
                 {
