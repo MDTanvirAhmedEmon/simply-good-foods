@@ -2,7 +2,9 @@
 import ProductCart from "@/components/Home/utils/ProductCart";
 import { Button } from "@/components/ui/button";
 import { useGetAllProductsQuery, useGetSingleProductQuery } from "@/redux/api/apiSlice";
+import { addToCart } from "@/redux/features/cart/cartSlice";
 import { LiaStarSolid } from "react-icons/lia";
+import { useDispatch } from "react-redux";
 
 const SingleProduct =  ({ params }) => {
   const {data} = useGetSingleProductQuery(params?.productId);
@@ -15,6 +17,7 @@ const SingleProduct =  ({ params }) => {
     (product) => product._id !== params?.productId
   );
 
+  const dispatch = useDispatch();
   const bgImage = {
     backgroundImage: `URL(${data?.data?.img})`,
     backgroundSize: "cover",
@@ -51,7 +54,7 @@ const SingleProduct =  ({ params }) => {
             Crispy baked panko breaded chicken topped with a savory general tsos
             sauce, served on a bed of brown rice alongside a cup of broccoli.
           </p>
-          <Button className="rounded-xl w-full py-6 text-lg">
+          <Button onClick={() => dispatch(addToCart(data?.data))} className="rounded-xl w-full py-6 text-lg">
             Add To Cart
           </Button>
         </div>

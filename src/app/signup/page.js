@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
+import {  signIn } from "next-auth/react"
 
 const SignUp = () => {
   const bgImage = {
@@ -105,7 +106,9 @@ const SignUp = () => {
             />
             <div className=" text-center my-3">
             <p>Sign Up With Google</p>
-            <FcGoogle className="w-14 h-14 cursor-pointer mx-auto"/>
+            <FcGoogle onClick={() => signIn("google", {
+              callbackUrl: "http://localhost:3000"
+            })} className="w-14 h-14 cursor-pointer mx-auto"/>
             </div>
 
             <p className="text-md mt-5">
