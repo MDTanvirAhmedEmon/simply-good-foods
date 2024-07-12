@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react";
+import { loginUser } from "@/utils/actions/loginUser";
+import { useRouter } from "next/navigation";
 
 const LogIn = () => {
   const bgImage = {
@@ -14,14 +16,22 @@ const LogIn = () => {
     backgroundPosition: "center",
     height: "100vh",
   };
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const formSubmit = (data) => console.log(data);
+  const formSubmit = async(data) => {
+
+    const res = await loginUser(data)
+
+    if(res.status) {
+      localStorage.setItem('food_token', res.data.accessToken);
+      router.push('/')
+    }
+  };
 
   return (
     <div style={bgImage}>

@@ -53,7 +53,7 @@ const Hero = () => {
               <CarouselContent>
                 {
                     // eslint-disable-next-line react/jsx-key
-                    carouselItem.map((item) => <CarouselItem> <Image className=" mx-auto rounded-full" src={item} height={450} width={450} alt="img"></Image></CarouselItem>)
+                    carouselItem.map((item, i) => <CarouselItem key={i}> <Image className=" mx-auto rounded-full" src={item} height={450} width={450} alt="img"></Image></CarouselItem>)
                 }
 
               </CarouselContent>
