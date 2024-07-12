@@ -6,7 +6,7 @@ import SectionTitle from "./utils/SectionTitle";
 
 const WhySGF = () => {
   return (
-    <div className="bg-[#FDFDFD] py-20">
+    <div id="why" className="bg-[#FDFDFD] py-20">
       <div className="container mx-auto">
         <SectionTitle>Why Simply Good Food</SectionTitle>
         <div className="flex flex-col md:flex-row gap-8 text-center mt-14">

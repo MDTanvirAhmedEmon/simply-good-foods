@@ -8,7 +8,7 @@ import {
 
 const FAQ = () => {
   return (
-    <div className="py-20">
+    <div id="faq" className="py-20">
       <div className="container mx-auto " >
         <SectionTitle>Popular Frequently Asked Questions</SectionTitle>
         <p className="mt-8 lg:mx-40 text-center mb-10">

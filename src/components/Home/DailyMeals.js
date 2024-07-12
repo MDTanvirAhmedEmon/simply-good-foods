@@ -10,7 +10,7 @@ const DailyMeals = () => {
     height: "auto",
   };
   return (
-    <div className=" bg-neutral-300 h-auto">
+    <div id="daily" className=" bg-neutral-300 h-auto">
       <div className="flex ">
         <div className="w-full md:w-1/2 h-[500px] md:h-[600px] flex  items-center">
 

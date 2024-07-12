@@ -21,7 +21,7 @@ const Menu =  () => {
     </div>
   }
   return (
-    <div className="py-20">
+    <div id="menu" className="py-20">
       <div className="container mx-auto">
         <SectionTitle>New & Trending menu</SectionTitle>
 

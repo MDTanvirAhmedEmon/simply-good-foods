@@ -10,6 +10,20 @@ import { signOut } from "next-auth/react";
 
 const Header = ({ session }) => {
   const [menu, setMenu] = useState(false);
+
+  // scrolling smooth
+  const handleScroll = (event, sectionId) => {
+    event.preventDefault();
+    document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleScrollOnMobile = (event, sectionId) => {
+    setMenu(!menu);
+    event.preventDefault();
+    document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+  };
+
+
   return (
     <div className="">
       <div className=" h-16 bg-[#FDB64E] flex items-center justify-center">
@@ -37,27 +51,27 @@ const Header = ({ session }) => {
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>Our menus</Link>
+                <Link onClick={(e) => handleScroll(e, '#menu')} href={"#menu"}>Our menus</Link>
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>Meal plans</Link>
+                <Link onClick={(e) => handleScroll(e, '#daily')} href={"/#daily"}>Meal plans</Link>
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>Catering</Link>
+                <Link onClick={(e) => handleScroll(e, '#why')} href={"/#why"}>Catering</Link>
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>How it work</Link>
+                <Link onClick={(e) => handleScroll(e, '#faq')} href={"/#faq"}>How it work</Link>
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>Testimonials</Link>
+                <Link onClick={(e) => handleScroll(e, '#feedback')} href={"/#feedback"}>Testimonials</Link>
               </li>
               <span className=" text-slate-300">|</span>
               <li>
-                <Link href={"/"}>FAQ</Link>
+                <Link onClick={(e) => handleScroll(e, '#faq')} href={"/#faq"}>FAQ</Link>
               </li>
             </ul>
           </nav>
@@ -157,32 +171,32 @@ const Header = ({ session }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"#menu"}>
                       Our menus
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"/#daily"}>
                       Meal plans
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"/#why"}>
                       Catering
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"/#faq"}>
                       How it work
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"/#feedback"}>
                       Testimonials
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={() => setMenu(!menu)} href={"/"}>
+                    <Link onClick={() => setMenu(!menu)} href={"/#faq"}>
                       FAQ
                     </Link>
                   </li>

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Feedbacks = () => {
     return (
-        <div className="pb-28 pt-8">
+        <div id="feedback" className="pb-28 pt-8">
             <div>
                 <SectionTitle>Feedbacks</SectionTitle>
                 <div className="flex flex-col xl:flex-row gap-10 mt-16 justify-center mx-5 xl:mx-0">
