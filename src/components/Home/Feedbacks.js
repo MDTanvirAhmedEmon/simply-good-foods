@@ -26,7 +26,7 @@ const Feedbacks = () => {
                     <Image className="hidden md:block rounded-full mr-4" src={person2} height={150} width={150} alt="person"/>
                     <Image className=" md:hidden rounded-full mr-4" src={person2} height={90} width={90} alt="person"/>
                     <div >
-                        <p className="mb-1 text-lg text-slate-600 font-bold">Anjelina</p>
+                        <p className="mb-1 text-lg text-slate-600 font-bold">David</p>
                         <p className="mb-1 text-[#FDB64E] text-md">Student</p>
                         <p className="text-lg text-slate-500">Thank you for all, you service was soo good and safe, i will 
                         suggest my friends about your fantastic services</p>
@@ -37,7 +37,7 @@ const Feedbacks = () => {
                     <Image className="hidden md:block rounded-full mr-4" src={person3} height={150} width={150} alt="person"/>
                     <Image className=" md:hidden rounded-full mr-4" src={person3} height={90} width={90} alt="person"/>
                     <div >
-                        <p className="mb-1 text-lg text-slate-600 font-bold">Anjelina</p>
+                        <p className="mb-1 text-lg text-slate-600 font-bold">Maria</p>
                         <p className="mb-1 text-[#FDB64E] text-md">Student</p>
                         <p className="text-lg text-slate-500">Thank you for all, you service was soo good and safe, i will 
                         suggest my friends about your fantastic services</p>

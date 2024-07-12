@@ -17,7 +17,7 @@ const Header = () => {
             <div className=" bg-white shadow-lg z-50 sticky ">
                 <div className=" container mx-auto flex items-center justify-between py-4 ">
                     <div>
-                        <Image className=" hidden lg:block" src={logo} height={80} width={80} alt="logo"></Image>
+                        <Link href={'/'}><Image className=" hidden lg:block cursor-pointer" src={logo} height={80} width={80} alt="logo"></Image></Link>
                     </div>
                     <nav className="hidden lg:block">
                         <ul className=" flex gap-4 lg:text-md xl:text-xl font-semibold text-slate-500 items-center">
@@ -43,7 +43,7 @@ const Header = () => {
                     {/*========= mobile nav =========*/}
                     <div className=" flex justify-between w-full items-center lg:hidden">
                         <div>
-                            <Image className=" " src={logo} height={50} width={50} alt="logo"></Image>
+                        <Link href={'/'}><Image className=" " src={logo} height={50} width={50} alt="logo"></Image></Link>
                         </div>
 
                         <div >

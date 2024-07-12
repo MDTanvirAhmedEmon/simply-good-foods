@@ -22,6 +22,7 @@ const Hero = () => {
     backgroundPosition: "center",
     height: "auto",
   };
+
   const carouselItem = [item1, item2, item3];
 
   return (
@@ -47,12 +48,12 @@ const Hero = () => {
             </Button>
           </div>
           {/* image carousel */}
-          <div className=" mx-8 xl:mx-0 w-auto md:w-[350px] lg:w-[400px] xl:w-[500px]">
-            <Carousel plugins={[Autoplay({delay: 2000, number: 60} ),]}>
+          <div className=" mx-8 xl:mx-0  w-auto md:w-[350px] lg:w-[400px] xl:w-[500px] ">
+            <Carousel className=" " plugins={[Autoplay({delay: 2000, number: 60} ),]}>
               <CarouselContent>
                 {
                     // eslint-disable-next-line react/jsx-key
-                    carouselItem.map((item) => <CarouselItem> <Image className=" mx-auto" src={item} height={450} width={450} alt="img"></Image></CarouselItem>)
+                    carouselItem.map((item) => <CarouselItem> <Image className=" mx-auto rounded-full" src={item} height={450} width={450} alt="img"></Image></CarouselItem>)
                 }
 
               </CarouselContent>
