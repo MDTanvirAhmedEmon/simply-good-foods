@@ -93,9 +93,11 @@ const Header = ({ session }) => {
           ) : (
             <>
               <div className="hidden xl:block">
-                <Button 
-                onClick={() => {signOut()}}
-                variant="outline"
+                <Button
+                  onClick={() => {
+                    signOut();
+                  }}
+                  variant="outline"
                   size="lg"
                   className=" border-red-600 hover:bg-red-600 hover:text-white border-2 rounded-xl text-red-600 font-semibold text-lg "
                 >
@@ -104,9 +106,11 @@ const Header = ({ session }) => {
               </div>
               {/* button for medium device */}
               <div className="hidden lg:block xl:hidden">
-                <Button 
-                onClick={() => {signOut()}}
-                variant="outline"
+                <Button
+                  onClick={() => {
+                    signOut();
+                  }}
+                  variant="outline"
                   size="default"
                   className=" border-red-600 hover:bg-red-600 hover:text-white border-2 rounded-xl text-red-600 font-semibold text-lg "
                 >
@@ -184,23 +188,40 @@ const Header = ({ session }) => {
                   </li>
                 </ul>
               </nav>
-              <div className=" text-center mt-7">
-                <Button
-                  onClick={() => setMenu(!menu)}
-                  variant="outline"
-                  size="default"
-                  className="rounded-xl mr-4 px-8"
-                >
-                  <Link href={"/login"}>Log In</Link>
-                </Button>
-                <Button
-                  onClick={() => setMenu(!menu)}
-                  size="default"
-                  className=" rounded-xl text-lg"
-                >
-                  <Link href={"/signup"}>Sign Up</Link>
-                </Button>
-              </div>
+              {!session?.user ? (
+                <>
+                  <div className=" text-center mt-7">
+                    <Button
+                      onClick={() => setMenu(!menu)}
+                      variant="outline"
+                      size="default"
+                      className="rounded-xl mr-4 px-8"
+                    >
+                      <Link href={"/login"}>Log In</Link>
+                    </Button>
+                    <Button
+                      onClick={() => setMenu(!menu)}
+                      size="default"
+                      className=" rounded-xl text-lg"
+                    >
+                      <Link href={"/signup"}>Sign Up</Link>
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center mt-7">
+                  <Button
+                    onClick={() => {
+                      signOut();
+                    }}
+                    variant="outline"
+                    size="default"
+                    className=" border-red-600 hover:bg-red-600 hover:text-white border-2 rounded-xl text-red-600 font-semibold text-lg px-8"
+                  >
+                    Log Out
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
