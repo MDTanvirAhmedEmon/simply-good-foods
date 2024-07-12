@@ -4,6 +4,7 @@ import bg from "../../../public/authbg.jpg";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
   const bgImage = {
@@ -19,13 +20,13 @@ const SignUp = () => {
   return (
     <div style={bgImage}>
       <div className="container mx-auto flex h-full items-center">
-        <div className="w-1/2">
+        <div className="hidden md:block md:w-1/2">
         </div>
-        <div className="w-1/2 py-16">
+        <div className="w-full md:w-1/2 py-16">
 
           <form
             onSubmit={handleSubmit(formSubmit)}
-            className="w-[500px] py-10 px-8 bg-[#ffffffe7] rounded-xl "
+            className="w-auto md:w-[500px] py-10 px-8 bg-[#ffffffe7] rounded-xl "
           >
             <div>
                 <h2 className="text-center text-2xl font-semibold mb-2 text-slate-600">Sign up</h2>
@@ -102,6 +103,11 @@ const SignUp = () => {
               type="submit"
               value="Sign Up"
             />
+            <div className=" text-center my-3">
+            <p>Sign Up With Google</p>
+            <FcGoogle className="w-14 h-14 cursor-pointer mx-auto"/>
+            </div>
+
             <p className="text-md mt-5">
               Already have an account?
               <Link className="text-[#FDB64E] font-bold" href={`/login`}>

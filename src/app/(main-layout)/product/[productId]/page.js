@@ -1,15 +1,15 @@
+"use client"
 import ProductCart from "@/components/Home/utils/ProductCart";
 import { Button } from "@/components/ui/button";
+import { useGetAllProductsQuery, useGetSingleProductQuery } from "@/redux/api/apiSlice";
 import { LiaStarSolid } from "react-icons/lia";
 
-const SingleProduct = async ({ params }) => {
-
-  const res = await fetch(`http://localhost:5000/products/${params?.productId}`);
-  const data = await res.json();
+const SingleProduct =  ({ params }) => {
+  const {data} = useGetSingleProductQuery(params?.productId);
 
   // all data fetch
-  const response = await fetch(`http://localhost:5000/products`);
-  const products = await response.json();
+  const {data:products} = useGetAllProductsQuery();
+
 
   const filteredProducts = products?.data?.filter(
     (product) => product._id !== params?.productId

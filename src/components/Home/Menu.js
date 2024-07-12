@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import SectionTitle from "./utils/SectionTitle";
 import ProductCart from "./utils/ProductCart";
@@ -8,11 +9,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useGetAllProductsQuery } from "@/redux/api/apiSlice";
 
-const Menu = async () => {
-  const res = await fetch(`http://localhost:5000/products`);
-  const data = await res.json();
-
+const Menu =  () => {
+  const {data, isLoading} = useGetAllProductsQuery();
+  if(isLoading) {
+    <div className="py-20">
+      <div className="container mx-auto">
+          <h1 className="text-center py-6 text-2xl text-slate-600">Loading...</h1>
+      </div>
+    </div>
+  }
   return (
     <div className="py-20">
       <div className="container mx-auto">

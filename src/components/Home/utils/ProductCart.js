@@ -1,11 +1,16 @@
+"use client"
 import { Button } from "@/components/ui/button";
+import { addToCart } from "@/redux/features/cart/cartSlice";
 import Link from "next/link";
 
 import { LiaStarSolid } from "react-icons/lia";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductCart = ({product}) => {
-
     const { img, productName, price, _id } = product;
+
+    const {products, total} = useSelector((state)  => state.cart);
+    const dispatch =  useDispatch();
 
     return (
         <div className="w-auto bg-slate-100 rounded-xl p-3">
@@ -15,8 +20,8 @@ const ProductCart = ({product}) => {
             <LiaStarSolid className="w-5 h-5 text-orange-400" /><p>4.5/5</p>
             </div>
             <Link href={`/product/${_id}`}><h2 className=" my-3 text-slate-600 text-xl font-bold capitalize cursor-pointer">{productName}</h2></Link>
-            <h2 className=" mb-3 text-slate-500 font-bold text-lg">${price}</h2>
-            <Button className="rounded-xl w-full py-6 text-lg">Add To Cart</Button>
+            <h2  className=" mb-3 text-slate-500 font-bold text-lg">${price}</h2>
+            <Button onClick={() => dispatch(addToCart(product))} className="rounded-xl w-full py-6 text-lg">Add To Cart</Button>
             <div className=" flex gap-4 mt-3 text-center"><span className=" text-pink-800">Protein 49g </span> / <span className=" text-pink-800">Carbs 23g</span> / <span className=" text-pink-800">Fat 23g</span></div>
 
         </div>
