@@ -17,14 +17,15 @@ const LogIn = () => {
     height: "100vh",
   };
   const [error, setError] = useState(null);
-  const session = useSession();
-  // useEffect(()=> {
-  //   if(session.status === 'authenticated'){
-  //     router.replace('/')
-  //   }
-  // },[session, router])
-
   const router = useRouter();
+  const {data:session, status: sessionStatus} = useSession();
+  useEffect(()=> {
+    if(sessionStatus === 'authenticated'){
+      router.replace('/')
+    }
+  },[sessionStatus, router])
+
+
 
   const {
     register,
@@ -48,6 +49,14 @@ const LogIn = () => {
       setError("Invalid email or password");
     }
   };
+
+  if(sessionStatus === 'loading') {
+    return (
+      <div className="py-20">
+        <h1 className="text-4xl text-center text-slate-600 font-bold">Loading...</h1>
+      </div>
+    )
+  }
 
   return (
     <div style={bgImage}>
