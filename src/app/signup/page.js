@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react";
-import { registerUser } from "@/utils/actions/registerUser";
+
 import { useRouter } from "next/navigation";
 
 const SignUp = () => {
@@ -22,18 +22,42 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const formSubmit = async (data) => {
 
+  const formSubmit = async (data) => {
     if (data.password !== data.confirmPassword) {
       setError('Passwords do not match');
-    } else {
-      const res = await registerUser(data)
+      return; // Add return to stop execution if passwords do not match
+    } 
+    const formData = {
+      name: data.name,
+      email: data.email,
+      address: data.address,
+      number: data.number,
+      password: data.password
+    };
+    console.log(formData);
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       console.log(res);
-      if(res.status) {
-        router.push('/login')
+      if (res.status === 400) {
+        setError("This email is already registered");
       }
+      if (res.status === 200) {
+        setError("");
+        router.push("/login");
+      }
+    } catch (error) {
+      setError("Error, try again");
+      console.log(error);
     }
   };
+
 
   return (
     <div style={bgImage}>
@@ -123,7 +147,7 @@ const SignUp = () => {
             <div className="text-center my-3">
               <p>Sign Up With Google</p>
               <FcGoogle onClick={() => signIn("google", {
-                callbackUrl: "http://localhost:3000"
+                callbackUrl: "https://simply-good-foods.vercel.app/"
               })} className="w-14 h-14 cursor-pointer mx-auto" />
             </div>
 

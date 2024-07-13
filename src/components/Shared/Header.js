@@ -3,12 +3,12 @@ import Image from "next/image";
 import logo from "../../../public/logo.jpg";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { HiMiniPower } from "react-icons/hi2";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
-const Header = ({ session }) => {
+const Header = () => {
   const [menu, setMenu] = useState(false);
 
   // scrolling smooth
@@ -16,24 +16,9 @@ const Header = ({ session }) => {
     event.preventDefault();
     document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
   };
-  const [token, setToken] = useState(null);
-  console.log(token);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedToken = localStorage.getItem('food_token');
-      setToken(storedToken);
-      console.log(storedToken);
-    }
-  }, []);
-
-  const handleRemoveToken =() => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem('food_token');
-      setToken(null);
-    }
-  }
-
+  const{data:session} = useSession()
+  console.log(session?.user);
 
   return (
     <div className="">
@@ -87,7 +72,7 @@ const Header = ({ session }) => {
             </ul>
           </nav>
           {/* button for large device */}
-          {!token && !session?.user ? (
+          {!session?.user ? (
             <>
               <div className="hidden xl:block">
                 <Button
@@ -121,7 +106,6 @@ const Header = ({ session }) => {
                 <Button
                   onClick={() => {
                     signOut();
-                    handleRemoveToken()
                   }}
                   variant="outline"
                   size="lg"
@@ -214,7 +198,7 @@ const Header = ({ session }) => {
                   </li>
                 </ul>
               </nav>
-              {!session?.user && !token ? (
+              {!session?.user ? (
                 <>
                   <div className=" text-center mt-7">
                     <Button
@@ -239,7 +223,6 @@ const Header = ({ session }) => {
                   <Button
                     onClick={() => {
                       signOut();
-                      handleRemoveToken();
                     }}
                     variant="outline"
                     size="default"

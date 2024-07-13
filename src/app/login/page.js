@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import bg from "../../../public/authbg.jpg";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
-import { loginUser } from "@/utils/actions/loginUser";
+import { signIn, useSession } from "next-auth/react";
+
 import { useRouter } from "next/navigation";
 
 const LogIn = () => {
@@ -16,7 +16,16 @@ const LogIn = () => {
     backgroundPosition: "center",
     height: "100vh",
   };
+  const [error, setError] = useState(null);
+  const session = useSession();
+  // useEffect(()=> {
+  //   if(session.status === 'authenticated'){
+  //     router.replace('/')
+  //   }
+  // },[session, router])
+
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -24,12 +33,19 @@ const LogIn = () => {
     formState: { errors },
   } = useForm();
   const formSubmit = async(data) => {
-
-    const res = await loginUser(data)
-
-    if(res.status) {
-      localStorage.setItem('food_token', res.data.accessToken);
-      router.push('/')
+    console.log(data);
+    const res = await signIn('credentials',{
+      redirect: false,
+      email: data?.email,
+      password: data?.password
+    })
+    console.log(res);
+    if(res?.url){
+      router.replace('/');
+    }
+    if(res?.error){
+      console.log(res.error);
+      setError("Invalid email or password");
     }
   };
 
@@ -78,7 +94,7 @@ const LogIn = () => {
                 placeholder="Password"
               />
             </div>
-
+            {error && <p className="text-red-600">{error}</p>}
             <input
               className="bg-primary py-3 px-6 text-lg font-semibold bg-primaryColor text-white rounded-xl mt-5 md:mt-7 cursor-pointer"
               type="submit"
@@ -89,7 +105,7 @@ const LogIn = () => {
               <FcGoogle
                 onClick={() =>
                   signIn("google", {
-                    callbackUrl: "http://localhost:3000",
+                    callbackUrl: "https://simply-good-foods.vercel.app/",
                   })
                 }
                 className="w-14 h-14 cursor-pointer mx-auto"
